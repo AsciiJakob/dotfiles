@@ -1,5 +1,3 @@
-" W to sudo save
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " fix alt key inputs not working when in a terminal https://vi.stackexchange.com/a/10506
 for i in range(97,122)
@@ -19,7 +17,7 @@ set showmode
 " highlight all occurances of search
 set hlsearch
 " shows first match while you are still typing
-incsearch
+set incsearch
 
 set noerrorbells
 set novisualbell
