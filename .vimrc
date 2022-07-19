@@ -16,8 +16,10 @@ set ruler
 set laststatus=2
 set showmode
 
+" highlight all occurances of search
 set hlsearch
-
+" shows first match while you are still typing
+incsearch
 
 set noerrorbells
 set novisualbell
@@ -30,25 +32,11 @@ set statusline+=%3*%=%*                             " Set right-side status info
 set statusline+=%4*%l/%L:%v%*                       " Set <line number>/<total lines>:<column>
 set statusline+=%5*\ %*                             " Set ending space
 
-map H ^
-map L $
+map H ^     " goto first character of line
+map L $     " goto last character of line
 
 
 " bind alt + (h/j) to move lines up and down
-" nnoremap <A-j> :m+<CR>==
-" nnoremap <A-k> :m-2<CR>==
-" nnoremap <A-h> <<
-" nnoremap <A-l> >>
-" inoremap <A-j> <Esc>:m+<CR>==gi
-" inoremap <A-k> <Esc>:m-2<CR>==gi
-" inoremap <A-h> <Esc><<`]a
-" inoremap <A-l> <Esc>>>`]a
-" vnoremap <A-j> :m'>+<CR>gv=gv
-" vnoremap <A-k> :m-2<CR>gv=gv
-" vnoremap <A-h> <gv
-" vnoremap <A-l> >gv
-
-
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
