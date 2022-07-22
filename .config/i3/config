@@ -183,5 +183,6 @@ bindsym $mod+r mode "resize"
 #extra stuff
 
 bindsym Print exec "flameshot gui" 
+bindsym $mod+c exec "rofi-rbw"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
