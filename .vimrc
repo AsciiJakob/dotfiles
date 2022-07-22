@@ -6,6 +6,7 @@ for i in range(97,122)
   exec "map! \e".c." <M-".c.">"
 endfor
 
+set clipboard+=unnamed
 
 syntax on
 set number
