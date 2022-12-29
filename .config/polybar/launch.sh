@@ -1,11 +1,24 @@
 #!/bin/bash
+# from https://github.com/polybar/polybar/issues/763#issuecomment-450940924
+(
+  flock 200
+  pkill polybar
 
-pkill polybar
-
-# Wait until the processes have been shut down
-# while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-
-# Launch Polybar, using default config location ~/.config/polybar/config.ini
-polybar mybar 2>&1 | tee -a /tmp/polybar.log & disown
-
-echo "Polybar launched..."
+  while pgrep -u $UID -x polybar > /dev/null; do sleep 0.5; done
+  outputs=$(xrandr --query | grep " connected" | cut -d" " -f1)
+  tray_output=eDP1
+  for m in $outputs; do
+    if [[ $m == "HDMI1" ]]; then
+        tray_output=$m
+    fi
+  done
+  for m in $outputs; do
+    export MONITOR=$m
+    export TRAY_POSITION=none
+    if [[ $m == $tray_output ]]; then
+      TRAY_POSITION=right
+    fi
+    polybar --reload mybar </dev/null >/var/tmp/polybar-$m.log 2>&1 200>&- &
+    disown
+  done
+) 200>/var/tmp/polybar-launch.lock
