@@ -1,5 +1,6 @@
 setxkbmap se
 xsetroot -solid "#1a1919"
+xhost +si:localuser:root # allow acpi handler to xautolock -locknow
 pipewire&
 pipewire-pulse&
 #pipewire-media-session&
