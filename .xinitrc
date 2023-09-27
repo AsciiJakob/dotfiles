@@ -1,4 +1,5 @@
 setxkbmap se
+export XDG_CURRENT_DESKTOP=i3
 xsetroot -solid "#1a1919"
 xhost +si:localuser:root # allow acpi handler to xautolock -locknow
 pipewire&
